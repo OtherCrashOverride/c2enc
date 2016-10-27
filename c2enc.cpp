@@ -120,7 +120,7 @@ int main(int argc, char** argv)
 		while (totalRead < bufferSize)
 		{
 			ssize_t readCount = read(STDIN_FILENO, input + totalRead, bufferSize - totalRead);
-			if (readCount < 0)
+			if (readCount <= 0)
 			{
 				//throw Exception("read failed.");
 
@@ -137,6 +137,7 @@ int main(int argc, char** argv)
 		if (totalRead < bufferSize)
 		{
 			fprintf(stderr, "read underflow. (%ld of %d)\n", totalRead, bufferSize);
+			break;
 		}
 
 
